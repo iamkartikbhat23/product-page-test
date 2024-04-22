@@ -19734,9 +19734,18 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./router */ "./resources/js/router.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
+
+(axios__WEBPACK_IMPORTED_MODULE_2___default().defaults).headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'Authorization': 'Bearer 3|UfCJ0RQ6iekOOnfUDeEO3K9D9qkwE6tcFrspZTKJ'
+};
+(axios__WEBPACK_IMPORTED_MODULE_2___default().defaults).baseURL = 'http://127.0.0.1:8000/api/';
 var app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({});
 app.use(_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 app.mount('#app');
@@ -19798,17 +19807,50 @@ var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_0__.createRouter)({
     path: '/',
     redirect: function redirect() {
       return {
-        name: 'product',
-        params: {
-          slug: 'fall-limited-edition-sneakers'
-        }
+        name: 'products'
       };
+    }
+  }, {
+    path: '/listProducts',
+    name: 'listProducts',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_views_ListProducts_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/ListProducts.vue */ "./resources/js/views/ListProducts.vue"));
+    }
+  }, {
+    path: '/addProduct',
+    name: 'addProduct',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_views_AddProduct_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/AddProduct.vue */ "./resources/js/views/AddProduct.vue"));
+    }
+  }, {
+    path: '/editProduct/:id',
+    name: 'editProduct',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_views_EditProduct_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/EditProduct.vue */ "./resources/js/views/EditProduct.vue"));
+    },
+    params: true
+  }, {
+    path: '/products',
+    name: 'products',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_views_Products_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Products.vue */ "./resources/js/views/Products.vue"));
     }
   }, {
     path: '/shop/product/:slug',
     name: 'product',
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_views_Product_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Product.vue */ "./resources/js/views/Product.vue"));
+    }
+  }, {
+    path: '/:pathMatch(.*)*',
+    name: 'errorPage',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_views_ErrorPage_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/ErrorPage.vue */ "./resources/js/views/ErrorPage.vue"));
+    },
+    props: function props(route) {
+      return {
+        code: route.query.code
+      };
     }
   }]
 });
@@ -41206,6 +41248,18 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -41236,7 +41290,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if (chunkId === "resources_js_views_Product_vue") return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_views_ListProducts_vue":1,"resources_js_views_AddProduct_vue":1,"resources_js_views_EditProduct_vue":1,"resources_js_views_Products_vue":1,"resources_js_views_Product_vue":1,"resources_js_views_ErrorPage_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
@@ -41428,6 +41482,11 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/nonce */
+/******/ 	(() => {
+/******/ 		__webpack_require__.nc = undefined;
 /******/ 	})();
 /******/ 	
 /************************************************************************/
